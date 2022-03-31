@@ -1,7 +1,23 @@
 .app {
   position: relative;
   height: 100vh;
-  background-color: floralwhite;
+  background-color: rgb(226, 226, 226);;
+  display: flex;
+  justify-content: center;
+}
+
+.background__video {
+  position: absolute;
+  z-index: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  filter: blur(4px) grayscale(0.8) brightness(0.5);
+}
+
+.container {
+  position: absolute;
+  z-index: 10;
 }
 
 .todo {
@@ -9,4 +25,12 @@
   display: flex;
   font-size: 18px;
   justify-content: space-between;
+}
+
+h1 {
+  padding-top: 40px;
+  color: rgb(226, 226, 226);
+  &:hover{
+    animation: shake 2s;
+  }
 }

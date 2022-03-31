@@ -1,8 +1,9 @@
 import {useState} from "react";
-import { Card } from 'react-bootstrap';
 import Todo from "./Todo";
-import FormTodo from "./FormTodo";
-import StartPage from "./StartPage"
+import FormTodo from "./form-to-do/FormTodo";
+import StartPage from "./start-page/StartPage"
+import Cards from './card/Card';
+import bgVideo from './video/Bonfire.mp4'
 
 import "./App.scss";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -16,14 +17,18 @@ function App() {
     }
   ]);
 
+  const mountForLenghtList = document.body.clientWidth < 768 ? 9 : 7;
+
   const addTodo = text => {
-    const newTodos = [...todos, { text }];
-    setTodos(newTodos);
+	if (todos.length < mountForLenghtList) {
+		const newTodos = [...todos, { text }];
+    	setTodos(newTodos);
+	}
   };
 
   const markTodo = index => {
     const newTodos = [...todos];
-    newTodos[index].isDone = true;
+    newTodos[index].isDone = !newTodos[index].isDone;
     setTodos(newTodos);
   };
 
@@ -36,26 +41,24 @@ function App() {
   return (
     <>
       <div className="app">
-      <StartPage/>
-       {/* <div className="container">
+      	<StartPage/>
+	  	<video autoPlay loop muted className="background__video">
+		  	<source src={bgVideo} type="video/mp4"/>
+		  </video>
+       <div className="container">
           <h1 className="text-center mb-4">Todo List</h1>
           <FormTodo addTodo={addTodo} />
           <div>
             {todos.map((todo, index) => (
-              <Card>
-                <Card.Body>
-                  <Todo
-                  key={index}
-                  index={index}
-                  todo={todo}
-                  markTodo={markTodo}
-                  removeTodo={removeTodo}
-                  />
-                </Card.Body>
-              </Card>
+              <Cards
+              key={index}
+              index={index}
+              todo={todo}
+              markTodo={markTodo}
+              removeTodo={removeTodo}/>
             ))}
           </div>
-      </div> */}
+      </div>
     </div>
     </>
   );

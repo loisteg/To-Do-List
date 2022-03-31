@@ -1,0 +1,57 @@
+@import '../animations/animations';
+
+.starting__modal {
+    position: absolute;
+    background:black;
+    z-index: 1000;
+    height: 100%;
+    width: 100vw;
+    visibility: visible;
+    padding: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    animation: fadeOutBackground 12s;
+    visibility: hidden;
+
+    .background__video {
+        transform: rotate(180deg);
+        object-fit: cover;
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+
+    h1 {
+        visibility: hidden;
+        font-size: 5rem;
+        animation: fadeInUp 6s;
+    }
+
+    h2 {
+        visibility: hidden;
+        font-size: 1.6rem;
+        margin-top: 100px;
+        animation: fadeInUpH2 6s;
+    }
+
+    .start {
+        margin-top: 0;
+        position: absolute;
+        bottom: 50%;
+        transform: translateY(-50%);
+        font-size: 6rem;
+        visibility: hidden;
+        animation: fadeInUpStart 11s;
+    }
+
+}
+
+@media(max-width: 768px) {
+    .starting__modal {
+        text-align: center;
+    }
+}
