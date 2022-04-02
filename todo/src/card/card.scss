@@ -2,6 +2,7 @@
 
 .card {
     border: 1px black;
+    height: 70px;
     box-shadow: 1px 1px 1px rgb(0 0 0 / 25%);
     animation: fadeIn 1s;
     &:first-child {

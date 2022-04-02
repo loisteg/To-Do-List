@@ -17,7 +17,13 @@ function App() {
     }
   ]);
 
-  const mountForLenghtList = document.body.clientWidth < 768 ? 9 : 6;
+  const mountForLenghtList = window.screen.width < 768 ? 
+								window.screen.height < 800 ? 
+									window.screen.height < 600 ? 3 : 5 
+								: 6 
+							: 9;
+
+  console.log(mountForLenghtList)
 
   const addTodo = text => {
 	if (todos.length < mountForLenghtList) {
